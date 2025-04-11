@@ -9,7 +9,9 @@ c’est probablement 42.
 
 Bonne exploration !
 
-## 📄 Gabarits (homologués par le Conseil Interstellaire des Examinateurs Fatigués)
+## 📄 Gabarits disponibles 
+
+**Tous nos gabarits sont homologués par le Conseil Interstellaire des Examinateurs Fatigués.**
 
 Voici les gabarits LaTeX officiels utilisés à bord de nombreux vaisseaux
 pédagogiques à travers la galaxie connue (et quelques coins obscurs du cégep).
@@ -29,7 +31,7 @@ coloration syntaxique alimentée par des trous de ver et Pygments.
 Pour compiler avec succès (et ne pas provoquer l’effondrement d’un système
 stellaire), assurez-vous de :
 
-- Avoir Pygments installé sur votre planète locale.
+- Avoir [Pygments](https://github.com/pygments/pygments) installé sur votre planète locale.
 - Utiliser l’option `--shell-escape`, sans quoi les couleurs disparaîtront dans un
 cri silencieux.
 
