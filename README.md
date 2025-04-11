@@ -10,13 +10,13 @@ autres aventuriers de l'enseignement supérieur) en situation critique.
 
 Tu y trouveras des artefacts pédagogiques soigneusement bricolés entre deux piles de copies :
 
-- 📄 **[Des gabarits LaTeX](gabaris)** pour écrire des examens, travaux pratiques ou déclarations
+- 📄 **[Des gabarits LaTeX](gabarits)** pour écrire des examens, travaux pratiques ou déclarations
   intergalactiques — testés dans des conditions réelles (c’est-à-dire la veille
   pour le lendemain).
 - 🛠️ [`c3hm`](c3hm) - **corriger à 3 heures du matin** : une interface en
   ligne de commande Python pour déléguer les tâches ingrates à la machine,
   pendant que tu questionnes tes choix de carrière à la lueur de l’écran.
-- 📚 **Des `README.md` loufoques** : 54,3% du temps investi dans ce dépôt est consacré à
+- 📚 **Des `README.md` loufoques** : 54% du temps investi dans ce dépôt est consacré à
   la rédaction de ces fichiers 🤦‍♂️.
 
 ## 🪄 Installation
