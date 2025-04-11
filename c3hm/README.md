@@ -22,10 +22,24 @@ Pour l'instant c'est tout, mais on a de grands projets pour l'avenir. Reste à l
 
 ## ⚙️ Comment ça marche ?
 
-### `c3hm clean`
+### `c3hm poubelle`
+
+```bash
+python3 c3hm.py poubelle --help
+```
 
 Cette commande nettoie les remises des étudiant·e·s en supprimant les fichiers et
-dossiers inutiles. Elle est conçue pour être utilisée dans le répertoire de remise
-des étudiant·e·s. Le nom des dossiers des étudiants doit être conforme à celui généré par
-Omnivox.
-Par exemple : `NOM1_`.
+dossiers inutiles. Pour l'instant elle supprime
+
+- `.git`
+- `node_modules`
+- `.venv`
+- `__pycache__`
+
+Elle est conçue pour être utilisée dans le répertoire de remise des
+étudiant·e·s. C'est à dire le dossier qui contient les dossiers des étudiant·e·s.
+Le nom de chaque dossier d'étudiant·e doit être conforme à celui
+généré par Omnivox. Par exemple : `NOM1_NOM2_123456789_`.
+
+Il est possible de fournir le chemin vers le dossier de remise des étudiant·e·s en
+utilisant l'option `--dir` ou `-d`.
