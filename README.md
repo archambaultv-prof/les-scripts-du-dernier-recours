@@ -49,6 +49,10 @@ Ici, on croit que l’humour est une stratégie pédagogique, que l'automatisati
 est une preuve d'amour-propre, et que tout prof mérite un peu de magie dans son
 quotidien numérique.
 
+Ce [XKCD](https://xkcd.com/1319/) illustre bien notre philosophie :
+
+![XKCD 1319](https://imgs.xkcd.com/comics/automation.png)
+
 ## 📜 Avertissement
 
 Les scripts et gabarits contenus ici ont été écrits :
