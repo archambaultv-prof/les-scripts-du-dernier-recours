@@ -1,0 +1,482 @@
+% Compile avec :
+% latexmk -lualatex -shell-escape tp.tex
+
+\documentclass[letterpaper, 12pt]{article}
+
+\usepackage{fontspec}          % Needed for LuaLaTeX fonts
+\usepackage[french]{babel}     % Needed for French language support
+\usepackage{geometry}          % Needed to set page margins
+\usepackage{graphicx}          % Needed for \includegraphics (logo)
+\usepackage[table]{xcolor}            % Used by minted and TikZ and tables (for colors)
+\usepackage{newunicodechar}    % Used to define the epicene dot
+\usepackage{enumitem}          % Used for customizing the enumerate environments
+\usepackage{minted}            % Used for Python code blocks
+\usepackage{fancyhdr}          % Used for headers and footers in the document
+\usepackage[hidelinks, colorlinks=true, linkcolor=blue,
+  urlcolor=blue, citecolor=blue, filecolor=blue,
+  pdfborderstyle={/S/U/W 1}]{hyperref} % Used for hyperlinks
+\usepackage{pdflscape}         % Used for landscape pages
+\usepackage{caption}           % Used for captions in tables
+\usepackage{array}             % Used for custom column types in tables
+\usepackage{colortbl}          % Pour la commande \columncolor
+\usepackage{soul}              % Used for highlighting text
+
+\geometry{margin=2.5cm}
+
+% Commande pour point médian épicène
+\newunicodechar{·}{\kern-.25em\lower.23ex\hbox{\textperiodcentered}\kern-.25em}
+
+\setlength{\headheight}{14.5pt}
+
+\newcommand{\boldred}[1]{\textbf{\textcolor{red}{#1}}}
+
+\begin{document}
+
+% PAGE DE TITRE
+\begin{titlepage}
+
+    \begin{center}
+
+    \includegraphics{logo_maisonneuve.png} 
+    \vspace{1cm}
+
+    {\Huge\bfseries 420-123-MA : Travail pratique 1\par}
+    \vspace{0.75cm}
+
+    {\LARGE\bfseries Grille de correction\par}
+    \vspace{0.75cm}
+
+    {\large\bfseries 1\textsuperscript{er} avril 2025\par}
+    \vfill
+
+    \end{center}
+
+    \begin{description}[leftmargin=0pt]
+        \item[Cours] 420-123-MA Pédagogie hivernale.
+        \item[Professeur] Tax Bloom
+        \item[Pondération] 15\% de la note finale.
+        \item[Intelligence artificielle] Autorisée selon la
+        \href{https://gitlab.com/infocmaisonneuve/general/-/blob/master/PDEA_INFORMATIQUE.pdf}
+        {politique du département}.
+        \item[Date de remise] 15 avril 23h59.
+        \item[Mode de remise] Remise électronique via Omnivox.
+    \end{description}
+
+    \vfill
+    \vfill
+
+\end{titlepage}
+
+\newpage
+
+\setcounter{page}{2}
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+\lhead{420-123-MA — Travail partique 1}
+
+
+\section{Introduction}
+
+Ce document est un gabarit pour des énoncés de travaux pratiques. Pour joindre
+l'utile à l'agréable, il contient aussi les connaissances de base sur les
+grilles de correction. Un grand merci à \href{https://www.polymtl.ca/expertises/farand-patrice}
+{Patrice Farand}, professeur à Polytechnique, pour son cours sur l'évaluation
+en enseignement supérieur.
+
+Les grilles de correction sont un outil essentiel pour évaluer le travail des
+étudiants. Elles permettent de définir des critères d'évaluation clairs et
+objectifs et de fournir un retour constructif sur le travail effectué. Elles
+sont également utilisées par les étudiants pour s'auto-évaluer et s'assurer
+qu'ils répondent aux attentes du professeur. De plus, elles permettent de
+réduire les biais de l'évaluateur en fournissant une structure claire pour
+l'évaluation.
+
+Ainsi, de part sa structure, les grilles de correction économisent le temps de
+l'évaluateur tout en garantissant que l'évaluation est juste et équitable. Dans
+ce document, nous allons présenter un modèle de grille de correction.
+
+\section{Modèle de grille de correction}
+
+La grille de correction décrite dans ce document présente les critères
+d'évaluation de manière concise. Elle permet de visualiser rapidement les
+différents niveaux de performance pour chaque critère. Chaque case de la grille
+contient une description du niveau de performance attendu pour le critère
+correspondant.
+
+Il est important d'énoncer le critère d'évaluation à l'aide d'un verbe d'action
+mesurable. Par exemple, au lieu d'écrire « Polymorphisme », on
+pourrait dire « Appliquer correctement le polymorphisme ». Le verbe d'action
+doit être en lien avec le niveau taxonomique de la compétence que l'on souhaite
+évaluer. Vous pouvez consulter 
+\href{https://www.enseigner.ulaval.ca/system/files/public/pedagogie/preparer-votre-cours/taxonomie-de-bloom-revisee.pdf}
+{ce document} de l'université Laval pour des exemples de verbes d'action.
+
+\subsection{Lexique de la grille de correction}
+
+La table ci-dessous illustre le lexique utilisé pour les grilles d'évaluation.
+Le nombre de niveau peut varier selon le type de travail à évaluer.
+\begin{table}[ht]
+  \centering
+  \captionsetup{position=top}
+  \caption{Lexique utilisé pour les grilles d'évaluations}
+  \newcolumntype{R}[2]{>{\raggedright\arraybackslash\columncolor{#2}}p{#1}}
+  \fontsize{10pt}{12pt}\selectfont
+  % \newlength{\extracolsepwidth}
+  % \setlength{\extracolsepwidth}{\dimexpr 2\tabcolsep\relax}
+  \begin{tabular}
+    {R{2cm}{gray!10}R{2cm}{green!30}R{2cm}{green!30!yellow!40}R{2cm}{yellow!40}R{2cm}{orange!40}R{2cm}{red!40}}
+    
+    &
+    \textbf{Échelle} \newline Niveau 1 &
+    \textbf{Échelle} \newline  Niveau 2  &
+    \textbf{Échelle} \newline  Niveau 3  &
+    \textbf{Échelle} \newline Niveau 4   &
+    \textbf{Échelle} \newline  Niveau 5  \\
+    \hline
+    \textbf{Critère} & & & & & \\
+    Indicateur et dimension &
+    Descripteur &
+    Descripteur &
+    Descripteur &
+    Descripteur &
+    Descripteur \\
+  \end{tabular}
+\end{table}
+
+\subsection{Exemple de grille de correction}
+
+Un exemple de grille de correction est présenté à la page suivante. Il s'agit
+d'une grille d'évaluation pour évaluer les grilles d'évaluation ! Elle est bien
+sûr incomplète. 
+
+\newpage
+\renewcommand{\arraystretch}{1.2} % Increase row spacing by a factor
+\begin{landscape} % Begin landscape mode
+  \begin{table}[ht]
+    \centering
+    \captionsetup{position=top}
+    \caption{Grille d’évaluation pour grille d'évaluation (1/2)}
+    \label{tab:grille}
+    \newcolumntype{R}[2]{>{\raggedright\arraybackslash\columncolor{#2}}p{#1}}
+    \fontsize{10pt}{12pt}\selectfont
+    \newlength{\extracolsepwidth}
+    \setlength{\extracolsepwidth}{\dimexpr 2\tabcolsep\relax}
+    \begin{tabular}
+      {R{3.5cm}{gray!10}R{3.5cm}{green!30}R{3.5cm}{green!30!yellow!40}R{3.5cm}{yellow!40}R{3.5cm}{orange!40}R{3.5cm}{red!40}}
+      
+       &
+      \textbf{Excellent} \newline $\geq$ 90\% &
+      \textbf{Très bien} \newline $\geq$ 80\% &
+      \textbf{Bien} \newline $\geq$ 70\% &
+      \textbf{Passable} \newline $\geq$ 60\% &
+      \textbf{Insuffisant} \newline $<$ 60\% \\
+      \hline
+      \textbf{Formuler des critères mesurables (25\%)} & & & & & \\
+    Verbe d'action mesurable à l'infinitif &
+    Tous les critères sont décrits à l'aide d'un verbe d'action mesurable à l'infinitif. &
+    Tous les critères, sauf un, sont décrits à l'aide d'un verbe  d'action mesurable à l'infinitif. &
+    La majorité des critères sont décrits à l'aide d'un verbe d'action mesurable  à l'infinitif. &
+    La moitié des critères sont décrits à l'aide d'un verbe  d'action mesurable à l'infinitif. &
+    Une minorité des critères sont décrits à l'aide d'un verbe  d'action mesurable à l'infinitif. \\
+
+    Niveau taxonomique adéquat &
+    Tous les critères sont décrits à l'aide d'un verbe en lien avec le niveau taxonomique de la compétence. &
+    Tous les critères sauf un sont décrits à l'aide d'un verbe en lien avec le niveau taxonomique de la compétence. &
+    La majorité des critères sont décrits à l'aide d'un verbe en lien avec le niveau taxonomique de la compétence. &
+    La moitié des critères sont décrits à l'aide d'un verbe en lien avec le niveau taxonomique de la compétence. &
+    Une minorité des critères sont décrits à l'aide d'un verbe en lien avec le niveau taxonomique de la compétence. \\
+
+    \textbf{Choisir une échelle appropriée (25\%)} & & & & & \\
+    Nombre de niveaux adéquat &
+    
+    L'échelle est en adéquation avec le nombre de critères et d'indicateurs,
+    ainsi que le travail demandé. Le nombre de niveau permet au professeur de
+    les distinguer facilement. &
+
+    L'échelle est généralement en adéquation avec les critères, les indicateurs
+    et le travail demandé. Le nombre de niveau permet au professeur de
+    les distinguer assez facilement. &
+    
+    L'échelle correspond partiellement aux critères et au travail demandé. Le
+    nombre de niveaux est parfois suffisant, mais il arrive que le professeur
+    hésite. &
+
+    L'échelle correspond faiblement aux critères et au travail demandé. Le
+    nombre de niveaux est rarement suffisant, il arrive souvent que le
+    professeur hésite. &
+    
+    L'échelle ne reflète pas clairement les critères ou le travail demandé. Le
+    nombre de niveaux est limité ou trop grand et ne permet pas de faire des
+    distinctions significatives. \\
+  
+  \end{tabular}
+\end{table}
+\end{landscape}
+
+% FIXME : Maybe use longtable ???
+\newpage
+
+\begin{landscape} % Begin landscape mode
+  \begin{table}[ht]
+    \centering
+    \captionsetup{position=top}
+    \caption{Grille d’évaluation pour grille d'évaluation (2/2)}
+    \label{tab:grille_2}
+    \newcolumntype{R}[2]{>{\raggedright\arraybackslash\columncolor{#2}}p{#1}}
+    \fontsize{10pt}{12pt}\selectfont
+    \begin{tabular}
+      {R{3.5cm}{gray!10}R{3.5cm}{green!30}R{3.5cm}{green!30!yellow!40}R{3.5cm}{yellow!40}R{3.5cm}{orange!40}R{3.5cm}{red!40}}
+      
+        &
+      \textbf{Excellent} \newline $\geq$ 90\% &
+      \textbf{Très bien} \newline $\geq$ 80\% &
+      \textbf{Bien} \newline $\geq$ 70\% &
+      \textbf{Passable} \newline $\geq$ 60\% &
+      \textbf{Insuffisant} \newline $<$ 60\% \\
+      \hline
+
+  \textbf{Utiliser des indicateurs avec dimension (25\%)} & & & & & \\
+  Dimension précisée &
+
+  Tous les indicateurs sont précis et communiquent clairement la dimension
+  évaluée. Cette dernière est facilement appréciable. &
+
+  Tous les indicateurs, sauf un, sont précis et communiquent clairement la
+  dimension évaluée. Cette dernière est appréciable sans grande difficulté. &
+
+  La majorité des indicateurs sont précis et communiquent clairement la
+  dimension évaluée. Cette dernière est appréciable, parfois avec difficulté. &
+
+  La moitié des indicateurs sont précis et communiquent clairement la
+  dimension évaluée. Cette dernière est peu appréciable. &
+
+  Une minorité des indicateurs sont précis et communiquent clairement la
+  dimension évaluée. Cette dernière est difficilement
+  appréciable par le professeur. \\
+
+  Quantité adéquate &
+
+  Les indicateurs sont juste assez nombreux pour évaluer facilement l'atteinte
+  du critère. Ils ne sont pas redondants. &
+
+  Les indicateurs sont généralement en nombre suffisant pour évaluer le
+  critère. Certains pourraient être perçus comme légèrement redondants
+  ou moins pertinents. &
+
+  Les indicateurs clés sont présents, mais d'autres sont superflus ou
+  redondants. &
+  
+  Certains indicateurs clés sont absents. D'autres sont superflus ou
+  redondants.&
+
+  Les indicateurs sont mal choisis, trop nombreux ou inutiles. Leur redondance
+  et leur flou compromettent sérieusement l’évaluation du critère.\\
+
+  \textbf{Écrire un descripteur précis (25\%)} & & & & & \\
+  Énoncé clair et constructif &
+
+  Le descripteur dirige parfaitement l'élève vers le résultat attendu.
+  L'énoncé est court, explicite et univoque. La modulation est progressive
+  et nuancée. &
+
+  Le descripteur dirige somme toute bien l'élève vers le résultat attendu.
+  L'énoncé est court, explicite et univoque, sauf pour un détail mineur.
+  La modulation est progressive et nuancée, sauf pour un détail mineur. &
+
+  Le descripteur dirige l'élève vers le résultat attendu, mais pourrait être
+  plus précis. L'énoncé est plus ou moins court, explicite et univoque. La
+  modulation manque de nuance ou progresse un peu trop rapidement ou trop
+  lentement. &
+
+  Le descripteur dirige peu l'élève vers le résultat attendu.
+  L'énoncé est devrait être réécrit, mais reste compréhensible. La modulation est trop rapide ou
+  trop lente. &
+
+  Le descripteur dirige très peu l'élève vers le résultat attendu.
+  L'énoncé est trop long, vague ou ambigu. La modulation est beaucoup trop rapide ou
+  trop lente. \\
+
+
+  \end{tabular}
+  \end{table}
+\end{landscape}
+
+\clearpage
+\subsection{Rétroaction avec une grille d’évaluation}
+
+Un exemple de rétroaction donnée à l'aide la grille de la
+table~\ref{tab:grille} est fourni à la page suivante. Notez qu'il est possible,
+pour un même indicateur, que plusieurs descripteurs soient partiellement
+atteints.
+
+Une bonne rétroaction devrait aussi s'accompagner d'une séries de commentaires
+constructifs. L'objectif est d'aider l'élève à se situer quant à son atteinte
+des compétences visées par le cours et, le cas échéant, de lui indiquer comment
+y arriver.
+
+D'ailleurs, ce sont les commentaires qui permettront d'expliquer pourquoi deux élèves
+ayant obtenu le même niveau de performance dans la grille de correction n'ont pas
+nécessairement exactement la même note.
+
+\begin{landscape} % Begin landscape mode
+  \begin{table}[ht]
+    \centering
+    \captionsetup{position=top}
+    \caption{Grille d’évaluation pour grille d'évaluation (1/2)}
+    \label{tab:grille_retroaction}
+    \newcolumntype{R}[2]{>{\raggedright\arraybackslash\columncolor{#2}}p{#1}}
+    \fontsize{10pt}{12pt}\selectfont
+    \begin{tabular}
+      {R{3.5cm}{gray!10}R{3.5cm}{green!30}R{3.5cm}{green!30!yellow!40}R{3.5cm}{yellow!40}R{3.5cm}{orange!40}R{3.5cm}{red!40}}
+      
+      \boldred{Note finale: 87,5\%} &
+      \textbf{Excellent} \newline $\geq$ 90\% &
+      \textbf{Très bien} \newline $\geq$ 80\% &
+      \textbf{Bien} \newline $\geq$ 70\% &
+      \textbf{Passable} \newline $\geq$ 60\% &
+      \textbf{Insuffisant} \newline $<$ 60\% \\
+      \hline
+      \textbf{Formuler des critères mesurables (25\%)} & &  \boldred{85\%}& & & \\
+    Verbe d'action mesurable à l'infinitif &
+    Tous les critères sont décrits à l'aide d'un verbe d'action mesurable à l'infinitif. &
+    \hl{Tous les critères, sauf un, sont décrits à l'aide d'un verbe  d'action mesurable à l'infinitif.} &
+    La majorité des critères sont décrits à l'aide d'un verbe d'action mesurable  à l'infinitif. &
+    La moitié des critères sont décrits à l'aide d'un verbe  d'action mesurable à l'infinitif. &
+    Une minorité des critères sont décrits à l'aide d'un verbe  d'action mesurable à l'infinitif. \\
+
+    Niveau taxonomique adéquat &
+    Tous les critères sont décrits à l'aide d'un verbe en lien avec le niveau taxonomique de la compétence. &
+    \hl{Tous les critères sauf un sont décrits à l'aide d'un verbe en lien avec le niveau taxonomique de la compétence.} &
+    La majorité des critères sont décrits à l'aide d'un verbe en lien avec le niveau taxonomique de la compétence. &
+    La moitié des critères sont décrits à l'aide d'un verbe en lien avec le niveau taxonomique de la compétence. &
+    Une minorité des critères sont décrits à l'aide d'un verbe en lien avec le niveau taxonomique de la compétence. \\
+
+    \textbf{Choisir une échelle appropriée (25\%)} & \boldred{100\%} & & & & \\
+    Nombre de niveaux adéquat &
+    
+    \hl{L'échelle est en adéquation avec le nombre de critères et d'indicateurs,
+    ainsi que le travail demandé. Le nombre de niveau permet au professeur de
+    les distinguer facilement.} &
+
+    L'échelle est généralement en adéquation avec les critères, les indicateurs
+    et le travail demandé. Le nombre de niveau permet au professeur de
+    les distinguer assez facilement. &
+    
+    L'échelle correspond partiellement aux critères et au travail demandé. Le
+    nombre de niveaux est parfois suffisant, mais il arrive que le professeur
+    hésite. &
+
+    L'échelle correspond faiblement aux critères et au travail demandé. Le
+    nombre de niveaux est rarement suffisant, il arrive souvent que le
+    professeur hésite. &
+    
+    L'échelle ne reflète pas clairement les critères ou le travail demandé. Le
+    nombre de niveaux est limité ou trop grand et ne permet pas de faire des
+    distinctions significatives. \\
+  
+  \end{tabular}
+\end{table}
+\end{landscape}
+
+\begin{landscape} % Begin landscape mode
+  \begin{table}[ht]
+    \centering
+    \captionsetup{position=top}
+    \caption{Grille d’évaluation pour grille d'évaluation (2/2)}
+    \label{tab:grille_retroaction_2}
+    \newcolumntype{R}[2]{>{\raggedright\arraybackslash\columncolor{#2}}p{#1}}
+    \fontsize{10pt}{12pt}\selectfont
+    \begin{tabular}
+      {R{3.5cm}{gray!10}R{3.5cm}{green!30}R{3.5cm}{green!30!yellow!40}R{3.5cm}{yellow!40}R{3.5cm}{orange!40}R{3.5cm}{red!40}}
+      
+        &
+      \textbf{Excellent} \newline $\geq$ 90\% &
+      \textbf{Très bien} \newline $\geq$ 80\% &
+      \textbf{Bien} \newline $\geq$ 70\% &
+      \textbf{Passable} \newline $\geq$ 60\% &
+      \textbf{Insuffisant} \newline $<$ 60\% \\
+      \hline
+
+  \textbf{Utiliser des indicateurs avec dimension (25\%)} & \boldred{90\%} & & & & \\
+  Dimension précisée &
+
+  \hl{Tous les indicateurs sont précis et communiquent clairement la dimension
+  évaluée. Cette dernière est facilement appréciable.} &
+
+  Tous les indicateurs, sauf un, sont précis et communiquent clairement la
+  dimension évaluée. Cette dernière est appréciable sans grande difficulté. &
+
+  La majorité des indicateurs sont précis et communiquent clairement la
+  dimension évaluée. Cette dernière est appréciable, parfois avec difficulté. &
+
+  La moitié des indicateurs sont précis et communiquent clairement la
+  dimension évaluée. Cette dernière est peu appréciable. &
+
+  Une minorité des indicateurs sont précis et communiquent clairement la
+  dimension évaluée. Cette dernière est difficilement
+  appréciable par le professeur. \\
+
+  Quantité adéquate &
+
+  \hl{Les indicateurs sont juste assez nombreux pour évaluer facilement l'atteinte
+  du critère.} Ils ne sont pas redondants. &
+
+  Les indicateurs sont généralement en nombre suffisant pour évaluer le
+  critère. \hl{Certains pourraient être perçus comme légèrement redondants
+  ou moins pertinents.} &
+
+  Les indicateurs clés sont présents, mais d'autres sont superflus ou
+  redondants. &
+  
+  Certains indicateurs clés sont absents. D'autres sont superflus ou
+  redondants.&
+
+  Les indicateurs sont mal choisis, trop nombreux ou inutiles. Leur redondance
+  et leur flou compromettent sérieusement l’évaluation du critère.\\
+
+  \textbf{Écrire un descripteur précis (25\%)} & & & \boldred{75\%} & & \\
+  Énoncé clair et constructif &
+
+  Le descripteur dirige parfaitement l'élève vers le résultat attendu.
+  L'énoncé est court, explicite et univoque. La modulation est progressive
+  et nuancée. &
+
+  \hl{Le descripteur dirige somme toute bien l'élève vers le résultat attendu.}
+  L'énoncé est court, explicite et univoque, sauf pour un détail mineur.
+  La modulation est progressive et nuancée, sauf pour un détail mineur. &
+
+  Le descripteur dirige l'élève vers le résultat attendu, mais pourrait être
+  plus précis. \hl{L'énoncé est plus ou moins court, explicite et univoque. La
+  modulation manque de nuance ou progresse un peu trop rapidement ou trop
+  lentement.} &
+
+  Le descripteur dirige peu l'élève vers le résultat attendu.
+  L'énoncé devrait être réécrit, mais reste compréhensible. La modulation est trop rapide ou
+  trop lente. &
+
+  Le descripteur dirige très peu l'élève vers le résultat attendu.
+  L'énoncé est trop long, vague ou ambigu. La modulation est beaucoup trop rapide ou
+  trop lente. \\
+
+
+  \end{tabular}
+  \end{table}
+
+\clearpage
+\section{Conclusion}
+
+Il est fortement conseillé de distribuer la grille de correction aux étudiants, par exemple en annexe
+de l'énoncé du travail. Non seulement cela va les guider dans leur travail, mais cela va aussi grandement
+vous faciliter la tâche de l'évaluation. Un travail bien fait et en adéquation avec la grille de
+correction est souvent un travail qui se corrige facilement. Cela limite aussi les recours possibles
+pour une correction jugée injuste ou arbitraire.
+
+\subsection{Pour plus de plaisir}
+
+Consulter le dépôt href{https://github.com/archambaultv-prof/les-scripts-du-dernier-recours}
+{\texttt{les-scripts-du-dernier-recours}} pour d'autres gabarits et scripts.
+
+\end{landscape}
+
+\end{document}

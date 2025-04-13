@@ -18,6 +18,8 @@ pédagogiques à travers la galaxie connue (et quelques coins obscurs du cégep)
 
 - [examen](examen/examen.tex) :  le modèle ultime pour interroger des formes de
   vie intelligentes ou, à défaut, vos étudiants. ([version PDF](examen/examen.pdf))
+- [travail pratique](travail_pratique/tp.tex) : le gabarit pour les travaux pratiques, idéal pour
+  l'exploration de nouveaux mondes (ou de nouvelles idées). ([version PDF](travail_pratique/tp.pdf))
 
 ## 🛸 Minted, LuaLaTeX et autres magouilles cosmiques
 
