@@ -37,6 +37,7 @@ dossiers inutiles. Pour l'instant elle supprime
 - `.idea`
 - `.pytest_cache`
 - `.venv`
+- `venv`
 - `.vscode`
 - `node_modules`
 
