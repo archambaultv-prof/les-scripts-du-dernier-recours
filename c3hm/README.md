@@ -42,3 +42,6 @@ dossiers inutiles. Pour l'instant elle supprime
 
 Le nom de chaque dossier d'étudiant·e doit être conforme à celui
 généré par Omnivox. Par exemple : `NOM1_NOM2_123456789_`.
+
+> [!NOTE]
+> `node_modules` peut être très long à supprimer, surtout s'il est sur OneDrive.
