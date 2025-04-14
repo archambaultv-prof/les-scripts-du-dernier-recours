@@ -68,4 +68,4 @@ ne sentent pas le PowerPoint.
 ## 🛡️ Licence
 
 Libre comme l’esprit d’un étudiant un vendredi à 16h. Distribué sous la licence
-MIT et CC-By. Vous pouvez choisir le licence qui vous convient.
+MIT et CC-By. Vous pouvez choisir la licence qui vous convient.
